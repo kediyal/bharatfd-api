@@ -11,7 +11,7 @@ repos:
       - id: check-json
       - id: check-toml
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.7.4
+    rev: v0.9.4
     hooks:
       - id: ruff
         name: Lint with Ruff
@@ -25,10 +25,10 @@ repos:
       - id: djcss
       - id: djjs
   - repo: https://github.com/google/yamlfmt
-    rev: v0.14.0
+    rev: v0.15.0
     hooks:
       - id: yamlfmt
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.31.0
+    rev: v4.1.1
     hooks:
       - id: commitizen
