@@ -162,3 +162,4 @@ cython_debug/
 #.idea/
 
 schema.yml
+dir_structure.txt
