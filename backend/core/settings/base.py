@@ -24,8 +24,10 @@ SECRET_KEY = (
     "django-insecure-pqqw%45g*2ai1z6irjpzcuer+t0qia)h-4@kk((smj6rhkegh9"
 )
 
-# Application definition
+# Switch to custom User model
+AUTH_USER_MODEL = "users.User"
 
+# Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -33,6 +35,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third party apps
+    "rest_framework",
+    # Local apps
+    "apps.users",
+    "apps.faqs",
 ]
 
 MIDDLEWARE = [
