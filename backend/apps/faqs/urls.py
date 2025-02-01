@@ -1,3 +1,7 @@
 from django.urls import include, path
 
-urlpatterns = []
+from .views import faq_list
+
+urlpatterns = [
+    path("", faq_list),
+]
