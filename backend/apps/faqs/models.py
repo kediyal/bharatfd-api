@@ -4,8 +4,9 @@ import uuid
 from asgiref.sync import async_to_sync, sync_to_async
 from ckeditor.fields import RichTextField
 from django.conf import settings
+from django.core.cache import cache
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.utils import timezone
 from googletrans import Translator
@@ -24,17 +25,32 @@ class FAQ(models.Model):
         return self.question[:50]
 
     def get_translated(self, lang="en"):
+        """
+        Get the translated FAQ from Redis cache or Google Translate API
+        """
+        cache_key = f"faq_translation:{self.id}:{lang}"
+        cached_translation = cache.get(cache_key)
+
+        if cached_translation:
+            print("Cache hit in get_translated")
+            return cached_translation
+
         try:
             translation = self.translations.get(language=lang)
-            return {
+            translated_data = {
                 "question": translation.question,
                 "answer": translation.answer,
             }
         except FAQTranslation.DoesNotExist:
-            return {
+            translated_data = {
                 "question": self.question,
                 "answer": self.answer,
             }
+
+        # Store in Redis cache
+        cache.set(cache_key, translated_data, timeout=60 * 60 * 24)
+
+        return translated_data
 
     class Meta:
         ordering = ["-created_at"]
@@ -97,3 +113,18 @@ async def async_translate_faq(faq):
 def create_faq_translations(sender, instance, created, **kwargs):
     if created:
         async_to_sync(async_translate_faq)(instance)
+
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+@receiver(post_save, sender=FAQ)
+@receiver(post_save, sender=FAQTranslation)
+@receiver(post_delete, sender=FAQ)
+@receiver(post_delete, sender=FAQTranslation)
+def clear_faq_cache(sender, instance, **kwargs):
+    """Clear cache when FAQ or its translation is modified."""
+    logger.info(f"Clearing cache for FAQs")
+    cache.clear()
