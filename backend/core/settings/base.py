@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "ckeditor",
     "drf_spectacular",
+    "django_redis",
     # Local apps
     "apps.users",
     "apps.faqs",
@@ -156,4 +157,14 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "BharatFD FAQ API",
     "DESCRIPTION": "API for Frequently Asked Questions",
     "VERSION": "1.0.0",
+}
+
+# Redis
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {},
+        "TIMEOUT": 60 * 60 * 24,  # Cache for 24 hours
+    }
 }
