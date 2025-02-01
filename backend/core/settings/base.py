@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third party apps
     "rest_framework",
+    "ckeditor",
     # Local apps
     "apps.users",
     "apps.faqs",
@@ -80,7 +81,10 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
-    }
+        "OPTIONS": {
+            "init_command": "PRAGMA synchronous=3; PRAGMA cache_size=2000; PRAGMA journal_mode=WAL;",
+        },
+    },
 }
 
 
@@ -124,3 +128,19 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Ckeditor
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "full",
+        "height": 300,
+        "width": 800,
+    },
+}
+
+# Languages
+LANGUAGES = [
+    ("en", "English"),
+    ("hi", "Hindi"),
+    ("bn", "Bengali"),
+]
