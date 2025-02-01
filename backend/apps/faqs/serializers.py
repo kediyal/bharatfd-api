@@ -23,3 +23,20 @@ class FAQSerializer(serializers.ModelSerializer):
             "translations",
         ]
         read_only_fields = ["id", "created_at", "updated_at"]
+
+    def to_representation(self, instance):
+        """
+        Dynamically exclude the 'translations' field for the default language (en).
+        """
+        representation = super().to_representation(instance)
+
+        lang = self.context.get("request").GET.get("lang", "en")
+
+        representation.pop("translations", None)
+
+        if lang != "en":
+            translation = instance.get_translated(lang)
+            representation["question"] = translation["question"]
+            representation["answer"] = translation["answer"]
+
+        return representation
