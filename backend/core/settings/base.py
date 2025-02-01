@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # Third party apps
     "rest_framework",
     "ckeditor",
+    "drf_spectacular",
     # Local apps
     "apps.users",
     "apps.faqs",
@@ -144,3 +145,15 @@ LANGUAGES = [
     ("hi", "Hindi"),
     ("bn", "Bengali"),
 ]
+
+# Rest Framework
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+# Spectacular Settings
+SPECTACULAR_SETTINGS = {
+    "TITLE": "BharatFD FAQ API",
+    "DESCRIPTION": "API for Frequently Asked Questions",
+    "VERSION": "1.0.0",
+}
