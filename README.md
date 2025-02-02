@@ -62,13 +62,48 @@ curl http://localhost:8000/api/faqs/?lang=hi
 # Bengali
 curl http://localhost:8000/api/faqs/?lang=bn
 ```
-
 ---
 
-## 📸 Screenshots (Coming Soon)
+## 📸 Images
 
-Stay tuned! 🚀
+Here are some screenshots showcasing different features and views of the project:
 
+- **FAQ Model View**
+  A view of the `FAQ` model, displaying the structure and attributes of the FAQs.
+  ![FAQ Model View](https://i.postimg.cc/8C5zXw4Q/faq-model-view.jpg)
+
+- **FAQ Translation Model**
+  The `FAQ Translation` model, highlighting the translations associated with each FAQ.
+  ![FAQ Translation Model](https://i.postimg.cc/fy4WLsND/faq-translation-model.jpg)
+
+- **Redis Cache: English (en)**
+  Cached data for English (`en`) in Redis, where the FAQs are stored.
+  ![Redis Cache - English](https://i.postimg.cc/bYbN5ZxJ/redis-en-cache.jpg)
+
+- **Redis Keys**
+  A list of all keys currently stored in Redis, with their corresponding values.
+  ![Redis Keys](https://i.postimg.cc/MTfKqTg9/redis-keys.jpg)
+
+- **Rich Text Formatting (RTF) Content**
+  A view of the rich text formatting (RTF) editor used in the application, showing how content is formatted.
+  ![RTF Content](https://i.postimg.cc/5tRNhvKH/rtf-ck.jpg)
+
+- **Swagger API Documentation**
+  The API documentation interface generated using Swagger, which allows users to explore and test the API endpoints.
+  ![Swagger API Documentation](https://i.postimg.cc/brQyS5yb/swagger.jpg)
+
+- **Swagger - GET Endpoint (English)**
+  The GET request for the English FAQ data via the Swagger API interface.
+  ![Swagger GET - English](https://i.postimg.cc/X7b76nLg/swagger-get-en.jpg)
+
+- **Swagger - GET Endpoint (Hindi)**
+  The GET request for the Hindi FAQ data via the Swagger API interface.
+  ![Swagger GET - Hindi](https://i.postimg.cc/287jzgXN/swagger-get-hi.jpg)
+
+- **Redoc API Documentation**
+  The API documentation generated using Redoc, providing an alternative way to explore the API.
+  ![Redoc API Documentation](https://i.postimg.cc/dtjW49D9/redoc.jpg)
+                       |
 ---
 
 ## ⚙️ Technologies Used
