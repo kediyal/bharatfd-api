@@ -62,6 +62,7 @@ curl http://localhost:8000/api/faqs/?lang=hi
 # Bengali
 curl http://localhost:8000/api/faqs/?lang=bn
 ```
+
 ---
 
 ## 📸 Images
@@ -103,7 +104,8 @@ Here are some screenshots showcasing different features and views of the project
 - **Redoc API Documentation**
   The API documentation generated using Redoc, providing an alternative way to explore the API.
   ![Redoc API Documentation](https://i.postimg.cc/dtjW49D9/redoc.jpg)
-                       |
+  |
+
 ---
 
 ## ⚙️ Technologies Used
@@ -119,7 +121,6 @@ Here are some screenshots showcasing different features and views of the project
 
 ## 🏗️ To-Do (Upcoming Features)
 
-- [ ] Unit tests using `pytest`
 - [ ] Docker setup for easy deployment
 - [ ] CI/CD pipeline
 
@@ -189,6 +190,22 @@ version_provider = "pep621"
 update_changelog_on_bump = true
 major_version_zero = true
 ```
+
+---
+
+## 🧪 Unit Tests
+
+We’ve added unit tests to ensure the core functionalities are working as expected. The tests cover the following areas:
+
+- **TestFAQModel**: Ensures the `FAQ` model behaves as expected.
+- **TestFAQTranslationModel**: Verifies the correct functioning of the `FAQTranslation` model.
+- **TestCaching**: Tests the caching system with Redis to ensure it stores and retrieves FAQs correctly.
+
+### Test Runthrough
+
+Here’s a quick demo showing the unit tests in action:
+
+![Unit Tests Runthrough](https://i.postimg.cc/yxyBmby5/unit-tests-runthrough.gif)
 
 ---
 
