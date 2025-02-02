@@ -56,6 +56,7 @@ class FAQ(models.Model):
         ordering = ["-created_at"]
         verbose_name = "FAQ"
         verbose_name_plural = "FAQs"
+        app_label = "faqs"
 
 
 class FAQTranslation(models.Model):
@@ -115,16 +116,10 @@ def create_faq_translations(sender, instance, created, **kwargs):
         async_to_sync(async_translate_faq)(instance)
 
 
-import logging
-
-logger = logging.getLogger(__name__)
-
-
 @receiver(post_save, sender=FAQ)
 @receiver(post_save, sender=FAQTranslation)
 @receiver(post_delete, sender=FAQ)
 @receiver(post_delete, sender=FAQTranslation)
 def clear_faq_cache(sender, instance, **kwargs):
     """Clear cache when FAQ or its translation is modified."""
-    logger.info(f"Clearing cache for FAQs")
     cache.clear()
