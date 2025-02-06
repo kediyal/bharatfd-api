@@ -35,8 +35,12 @@ cd backend
 # Run migrations
 python manage.py migrate
 
+# Create a superuser for the admin panel
+python manage.py createsuperuser
+
 # Start the server
 python manage.py runserver
+
 ```
 
 ---
@@ -64,6 +68,30 @@ curl http://localhost:8000/api/faqs/?lang=bn
 ```
 
 ---
+
+### 4️⃣ Adding FAQs
+
+To make it easy for users to copy and paste common FAQs into the admin panel, a `faqs.txt` file is included in the repository.
+
+#### Steps to Add FAQs
+
+🔹 **Go to the Admin Panel**
+
+- Start your server and visit [http://localhost:8000/admin](http://localhost:8000/admin).
+- Log in with your superuser credentials.
+
+🔹 **Navigate to the FAQs Section**
+
+- Click **"Add FAQ"** and enter a question and answer.
+- You can copy and paste questions from the provided `faqs.txt` file.
+
+🔹 **Save and Repeat**
+
+- Add as many FAQs as needed.
+
+#### 📄 `faqs.txt` (Copy-Paste Ready)
+
+A `faqs.txt` file is included with pre-written FAQs. You can open it in any text editor and copy the questions and answers directly.
 
 ## 📸 Images
 
